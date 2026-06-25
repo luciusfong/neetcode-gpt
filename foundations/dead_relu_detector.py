@@ -12,6 +12,9 @@ class Solution:
                 x = module(x)
                 if isinstance(module, nn.ReLU):
                     # A neuron is dead if it outputs 0 for ALL samples in the batch
+                    print(f"all{(x == 0).all}")
+                    print(f"dim0{(x == 0).all(dim=0).float()}")
+                    print(f"dim1{(x == 0).all(dim=1).float()}")
                     dead = (x == 0).all(dim=0).float().mean().item()
                     dead_fractions.append(round(dead, 4))
         return dead_fractions
